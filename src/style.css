@@ -1,0 +1,79 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --my-color: #fefefa;
+    --button-color: slateblue;
+    --btn-shadow: 2px 4px 5px rgb(0, 0, 0, 0.25);
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.2rm;
+}
+
+/* Start Game Button Design */
+
+
+/*Dialog Design*/
+#modal {
+    padding: 0.75rem;
+    max-width: 400px;
+}
+
+.name-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.name-input>input {
+    border-radius: 0.4rem;
+    font-size: 16px;
+    padding: 0.25rem 0.4rem;
+}
+
+.name-input>input:focus {
+    border-color: gold;
+    outline: none;
+}
+
+.form-btn-group {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+}
+
+.form-btn-group>button {
+    padding: 4px 8px;
+    font-size: 16px;
+}
+
+#submit-btn {
+    background-color: var(--button-color);
+    color: var(--my-color);
+    border: none;
+    border-radius: 0.4rem;
+    box-shadow: var(--btn-shadow);
+}
+
+#submit-btn:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#cancel-btn {
+    border: none;;
+    border-radius: 0.4rem;
+    background-color: #8d021f;
+    color: var(--my-color);
+    box-shadow: var(--btn-shadow);
+}
+
+
+#cancel-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
