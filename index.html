@@ -9,8 +9,7 @@
 <body>
     <h2>Tic Tac Toe</h2>
     <div class="start-btn-container">
-        <button>Start New Game</button>
-        <button>Rematch</button>
+        <button id="new-game-btn">Start New Game</button>
     </div>
 
     <!-- Dialog Element for name input -->
@@ -30,9 +29,20 @@
     </dialog>
 
     <!-- Game board grid section -->
-     <div id="game-board" class="board-container">
+     <div class="game-container">
+        <!-- Tic Tac Toe grid : 9 cells will be generated in JS, but we put container -->
+        <div class="board" id="board"></div>
 
-     </div>
+        <!-- bottom bar: turn/winner + restart -->
+        <div class="status-area">
+            <div class="turn-indicator" id="statusMessage">
+                🎮 Player <span id="currentPlayerSpan">X</span>'s turn
+            </div>
+            <button class="restart-btn" id="restartButton">
+                ↻ Rematch
+            </button>
+        </div>
+    </div>
 
     <script src="./src/app.js"></script>
 </body>
