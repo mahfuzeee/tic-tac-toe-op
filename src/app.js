@@ -2,7 +2,7 @@
 
 (function(){
 
-   // ---------- CORE STATE (single source of truth) ----------
+   // ---------- CORE STATE----------
    let boardState = [      // flat array representing 3x3 grid
          '', '', '',       // row 0: indices 0,1,2
          '', '', '',       // row 1: indices 3,4,5
@@ -10,13 +10,22 @@
    ];
 
    let currentPlayer = 'X';        // X always starts
-   let gameActive = true;          // becomes false if win/draw
+   let gameActive = false;          // becomes false if win/draw
    let moveCount = 0;             // counts moves, helps to detect draw
-
+   
+   
    // DOM references
    const boardElement = document.getElementById('board');
    const statusMessageEl = document.getElementById('statusMessage');
    const currentPlayerSpan = document.getElementById('currentPlayerSpan');
+   const newGameBtn = document.getElementById("new-game-btn");
+   const modal = document.getElementById("modal");
+   const form = document.getElementById("player-name-form");
+   const submitBtn = document.getElementById("submit-btn");
+   const cancelBtn = document.getElementById("cancel-btn");
+   const playerXEl = document.querySelector(".playerX");
+   const playerOEl = document.querySelector(".playerO");
+
 
    // ---------- WIN PATTERNS (all 8 lines) ----------
    const winPatterns = [
@@ -63,6 +72,7 @@
          });
    }
 
+ 
    // ---------- HANDLE CELL CLICK (core game logic) ----------
    function handleCellClick(index, event) {
          // 1. validation: game active? cell already filled?
@@ -85,9 +95,10 @@
          const winResult = checkWin(boardState, currentPlayer);
          
          if (winResult) {
-            // WIN! 🏆
+      
             gameActive = false;
             statusMessageEl.innerHTML = `✨ Player <span style="background:#3a6b5b; padding:6px 16px; border-radius:40px;">${currentPlayer}</span> wins! ✨`;
+            showScore(currentPlayer);
             disableAllCells();   // freeze board
          } else if (moveCount === 9) {
             // DRAW – board full, no winner
@@ -114,6 +125,56 @@
          return false;          // no winner yet
    }
 
+   //----Adding Player name to DOM----
+   function showPlayer(playerx, playero) {
+      playerXEl.innerHTML = `
+         <h3>${playerx} (X)<h3>
+         <h4 id="scoreX"><h4>
+         `
+      playerOEl.innerHTML = `
+         <h3>${playero} (O)<h3>
+         <h4 id="scoreO"><h4>
+         `
+   }
+
+   //Show game score----
+   let counterX = 0;
+   let counterO = 0;
+   function showScore(player) {
+      const xScoreEl = document.getElementById("scoreX");
+      const oScoreEl = document.getElementById("scoreO");
+      
+      if(player === "X") {
+         counterX++;
+         xScoreEl.innerText = counterX;
+      } else {
+         counterO++;
+         oScoreEl.innerText = counterO;
+      }
+   }
+
+   newGameBtn.addEventListener('click', () => {
+      modal.showModal();
+   });
+
+     submitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      resetGame();
+      const player1 = document.getElementById("player1").value;
+      const player2 = document.getElementById("player2").value;
+
+      showPlayer(player1, player2);
+      modal.close();
+      form.reset();
+      
+   });
+
+
+   cancelBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      form.reset();
+      modal.close();
+   });
    // ---------- DISABLE ALL CELLS (game over) ----------
    function disableAllCells() {
          const cells = document.querySelectorAll('.cell');

@@ -28,12 +28,35 @@ body {
 
 
 /* Start Game Button Design */
+#new-game-btn {
+   background: #facc15;
+   border: none;
+   color: #0f172a;
+   font-size: 1.2rem;
+   font-weight: bold;
+   padding: 6px 12px;
+   border-radius: 12px;
+   cursor: pointer;
+   margin-bottom: 0.2rem;
+}
 
+#new-game-btn:hover {
+   opacity: 0.7;
+}
+
+#new-game-btn:active {
+   transform: scale(1.1);
+}
 
 /*Dialog Design*/
 #modal {
     padding: 0.75rem;
     max-width: 400px;
+    position: relative;
+    left: 40%;
+    top: 20%;
+    transform: translateX(50%);
+    transform: translateY(50%);
 }
 
 .name-input {
@@ -92,13 +115,13 @@ body {
     cursor: pointer;
 }
 
-
+/* Game Container Div Design */
 
 .game-container {
    background: rgba(255, 255, 255, 0.1);
    backdrop-filter: blur(8px);
-   border-radius: 48px;
-   padding: 30px 40px;
+   border-radius: 40px;
+   padding: 16px 20px;
    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
    border: 1px solid rgba(255,255,255,0.2);
 }
@@ -106,9 +129,9 @@ body {
 /* ----- BOARD: 3x3 GRID ----- */
 .board {
    display: grid;
-   grid-template-columns: repeat(3, 110px);
-   grid-template-rows: repeat(3, 110px);
-   gap: 15px;
+   grid-template-columns: repeat(3, 100px);
+   grid-template-rows: repeat(3, 100px);
+   gap: 12px;
    background: transparent;
    justify-content: center;
 }
@@ -116,7 +139,7 @@ body {
 /* ----- CELLS – interactive tiles ----- */
 .cell {
    background: #0b1b2f;
-   border-radius: 24px;
+   border-radius: 20px;
    display: flex;
    align-items: center;
    justify-content: center;
@@ -124,9 +147,9 @@ body {
    font-weight: 700;
    color: white;
    box-shadow: 
-         inset 0 -8px 0 #05101f,
+         inset 0 -6px 0 #05101f,
          inset 0 2px 8px rgba(255,255,255,0.1),
-         0 12px 20px -8px black;
+         0 10px 16px -8px black;
    transition: 0.08s ease;
    cursor: pointer;
    user-select: none;
@@ -162,21 +185,21 @@ body {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   margin-top: 30px;
+   margin-top: 20px;
    background: #0e1a26;
-   padding: 12px 24px;
-   border-radius: 50px;
+   padding: 10px 16px;
+   border-radius: 36px;
    color: white;
    border: 1px solid #3d5a73;
 }
 
 .turn-indicator {
-   font-size: 1.5rem;
+   font-size: 1.32rem;
    font-weight: 600;
-   letter-spacing: 1.5px;
+   letter-spacing: 1.2px;
    display: flex;
    align-items: center;
-   gap: 10px;
+   gap: 8px;
 }
 
 .restart-btn {
@@ -185,15 +208,16 @@ body {
    color: #0f172a;
    font-size: 1.2rem;
    font-weight: bold;
-   padding: 8px 16px;
-   border-radius: 20px;
+   padding: 6px 8px;
+   border-radius: 18px;
    cursor: pointer;
    box-shadow: 0 4px 0 #b7811a, 0 10px 20px black;
    transition: 0.06s linear;
-   display: flex;
+   /* display: flex;
    gap: 8px;
-   align-items: center;
+   align-items: center; */
    border: 1px solid #ffe570;
+   margin-left: 2px;
 }
 
 .restart-btn:active {
@@ -206,4 +230,46 @@ body {
    background: #1f4a3c;
    border-radius: 30px;
    padding: 4px 16px;
+}
+
+.player-show {
+   display: grid;
+   justify-content: center;
+   grid-template-areas: 
+   "score score"
+   "playerx playero";
+   gap: 0.5rem;
+   margin-top: 0.5rem;
+}
+
+.score {
+   grid-area: score;
+   background: var(--my-color);
+   width: 100%;
+   height: fit-content;
+   padding: 2px 4px;
+   border-radius: 4px;
+   display: flex;
+   justify-content: center;
+   font-size: 22px;
+   font-weight: 700;
+}
+
+.playerX, .playerO {
+   background-color: var(--my-color);
+   height: 60px;
+   width: 120px;
+   display: flex;
+   flex-direction: column;
+   border-radius: 0.5rem;
+   align-items: center;
+   padding: 4px;
+   /* justify-content: center; */
+}
+
+.playerX {
+   grid-area: playerx;
+}
+.playerO {
+   grid-area: playero;
 }

@@ -7,7 +7,7 @@
     <title>Tic Tac Toe Game</title>
 </head>
 <body>
-    <h2>Tic Tac Toe</h2>
+    <h2 style="color: white; font-size: 30px;">Tic Tac Toe</h2>
     <div class="start-btn-container">
         <button id="new-game-btn">Start New Game</button>
     </div>
@@ -17,13 +17,13 @@
         <form id="player-name-form" action="submit">
             <div class="name-input">
                 <label for="player1">Player-1 name:</label>
-                <input id="player1" type="text" placeholder="Player-1 Name">
+                <input id="player1" type="text" placeholder="Player-1 Name" required>
                 <label for="player2">Player-2 name:</label>
-                <input id="player2" type="text" placeholder="Player-2 Name">
+                <input id="player2" type="text" placeholder="Player-2 Name" required>
             </div>
             <div class="form-btn-group">
-                <button id="submit-btn">Submit</button>
-                <button id="cancel-btn">Cancel</button>
+                <button type="submit" id="submit-btn">Submit</button>
+                <button type="reset" id="cancel-btn">Cancel</button>
             </div>
         </form>
     </dialog>
@@ -43,6 +43,13 @@
             </button>
         </div>
     </div>
+
+    <!-- Player Name showing -->
+     <div class="player-show">
+         <div class="score">Score Board</div>
+         <div class="playerX"></div>
+         <div class="playerO"></div>
+     </div>
 
     <script src="./src/app.js"></script>
 </body>
