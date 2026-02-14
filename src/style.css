@@ -27,7 +27,7 @@ body {
 
 
 
-/* Start Game Button Design */
+/* Start New Game Button Design */
 #new-game-btn {
    background: #facc15;
    border: none;
@@ -38,6 +38,7 @@ body {
    border-radius: 12px;
    cursor: pointer;
    margin-bottom: 0.2rem;
+   box-shadow: var(--btn-shadow);
 }
 
 #new-game-btn:hover {
@@ -52,6 +53,7 @@ body {
 #modal {
     padding: 0.75rem;
     max-width: 400px;
+    max-height: 500px;
     position: relative;
     left: 40%;
     top: 20%;
@@ -188,7 +190,7 @@ body {
    margin-top: 20px;
    background: #0e1a26;
    padding: 10px 16px;
-   border-radius: 36px;
+   border-radius: 30px;
    color: white;
    border: 1px solid #3d5a73;
 }
@@ -232,6 +234,7 @@ body {
    padding: 4px 16px;
 }
 
+/*-----Scoreboard Design----------*/
 .player-show {
    display: grid;
    justify-content: center;

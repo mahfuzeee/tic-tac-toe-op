@@ -10,9 +10,9 @@
    ];
 
    let currentPlayer = 'X';        // X always starts
-   let gameActive = false;          // becomes false if win/draw
+   let gameActive = false;          // becomes false if win/draw true for play.
    let moveCount = 0;             // counts moves, helps to detect draw
-   
+   let isStarted = false;         // becomes true when start new game button clicked.
    
    // DOM references
    const boardElement = document.getElementById('board');
@@ -153,28 +153,33 @@
       }
    }
 
+   //Show form to input player name
    newGameBtn.addEventListener('click', () => {
       modal.showModal();
    });
 
-     submitBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      resetGame();
-      const player1 = document.getElementById("player1").value;
-      const player2 = document.getElementById("player2").value;
+   //When forms submit button clicked Show players Name.
+   submitBtn.addEventListener('click', (e) => {
+   e.preventDefault();  //Disable default action 
+   resetGame();
+   isStarted = true;
+   const player1 = document.getElementById("player1").value;
+   const player2 = document.getElementById("player2").value;
 
-      showPlayer(player1, player2);
-      modal.close();
-      form.reset();
+   showPlayer(player1, player2);
+   modal.close();
+   form.reset();
       
    });
 
-
+   //-----------Close popup-------------
    cancelBtn.addEventListener('click', (e) => {
       e.preventDefault();
       form.reset();
       modal.close();
    });
+
+
    // ---------- DISABLE ALL CELLS (game over) ----------
    function disableAllCells() {
          const cells = document.querySelectorAll('.cell');
@@ -206,7 +211,9 @@
          
          // restart button listener
          const restartBtn = document.getElementById('restartButton');
-         restartBtn.addEventListener('click', resetGame);
+         restartBtn.addEventListener('click', () => {
+            if(isStarted) resetGame();
+         });
    }
 
    // start everything when DOM ready
